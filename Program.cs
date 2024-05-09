@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using dywidag.Infastructure.Services;
-using dywidag.profiles;
+using dywidag.Infastructure.Profiles;
 using Microsoft.Extensions.DependencyInjection;
 
     var config = new MapperConfiguration(mc =>
