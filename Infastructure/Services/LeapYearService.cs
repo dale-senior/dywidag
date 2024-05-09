@@ -22,7 +22,7 @@ namespace dywidag.Infastructure.Services
         {
             Dictionary<int, string> allYears = new Dictionary<int, string>();
             var currentYear = DateTime.UtcNow.Year;
-            for (int i = 1; i < currentYear; i++)
+            for (int i = 1; i < currentYear + 1; i++)
             {
                 allYears.Add(i, IsLeapYear(i) ? "Yes" : "No"); 
             }

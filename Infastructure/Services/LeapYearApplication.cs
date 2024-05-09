@@ -25,15 +25,17 @@ namespace dywidag.Infastructure.Services
         {
             try
             {
+                //get key value pair of years and isleapyear
                 var yearDictionary = _leapYearService.GetAllYears();
 
-                if(_csvService.OutputToCsvFile(yearDictionary, ["Year", "LeapYear"], "LeapYears")) {
-                    Console.WriteLine("CSV Success");
-                }
+                //write dictionary results to csv file
+                _csvService.OutputToCsvFile(yearDictionary, ["Year", "LeapYear"], "LeapYears");
 
-                if(_jsonService.OutputToJsonFile<LeapYearDto>(yearDictionary, "LeapYears")) {
-                    Console.WriteLine("json Success");
-                }
+                //write dictionary results to json file (pass correct mapped type as generic)
+                _jsonService.OutputToJsonFile<LeapYearDto>(yearDictionary, "LeapYears");
+
+                //log to console total leap years
+                Console.WriteLine($"Total Leap Years: {_leapYearService.GetLeapYears().Count}");
             }
             catch(Exception ex) 
             {
