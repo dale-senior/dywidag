@@ -7,7 +7,7 @@ namespace dywidag.Infastructure.Services
 {
     public class CsvService : ICsvService
     {
-        public bool OutputToCsvFile(Dictionary<int, bool> output, string[] headers)
+        public bool OutputToCsvFile(Dictionary<int, string> output, string[] headers)
         {
             try
             {

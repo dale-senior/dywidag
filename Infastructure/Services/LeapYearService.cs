@@ -11,20 +11,20 @@ namespace dywidag.Infastructure.Services
         public List<int> GetAllNonLeapYears()
         {
             var allyears = this.GetAllYears();
-            var noneLeapYears = allyears.Where(kvp => kvp.Value == false)
+            var noneLeapYears = allyears.Where(kvp => kvp.Value.Contains("No"))
                                         .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
             return noneLeapYears.Keys.ToList();
         }
 
         /*Returns key value pair where the key is the year and value is bool represening is a leap year or not*/
-        public Dictionary<int, bool> GetAllYears()
+        public Dictionary<int, string> GetAllYears()
         {
-            Dictionary<int, bool> allYears = new Dictionary<int, bool>();
+            Dictionary<int, string> allYears = new Dictionary<int, string>();
             var currentYear = DateTime.UtcNow.Year;
             for (int i = 1; i < currentYear; i++)
             {
-                allYears.Add(i, IsLeapYear(i)); 
+                allYears.Add(i, IsLeapYear(i) ? "Yes" : "No"); 
             }
             return allYears;
         }
@@ -32,7 +32,7 @@ namespace dywidag.Infastructure.Services
         public List<int> GetLeapYears()
         {
             var allyears = this.GetAllYears();
-            var leapYears = allyears.Where(kvp => kvp.Value == true)
+            var leapYears = allyears.Where(kvp => kvp.Value.Contains("Yes"))
                                     .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
             return leapYears.Keys.ToList();

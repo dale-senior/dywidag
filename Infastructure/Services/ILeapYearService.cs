@@ -7,7 +7,7 @@ namespace dywidag.Infastructure.Services
 {
     public interface ILeapYearService
     {
-        Dictionary<int, bool> GetAllYears();
+        Dictionary<int, string> GetAllYears();
         List<int> GetLeapYears();
         List<int> GetAllNonLeapYears();
         bool IsLeapYear(int year);

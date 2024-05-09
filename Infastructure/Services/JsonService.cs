@@ -12,7 +12,7 @@ namespace dywidag.Infastructure.Services
             
         }
 
-        public bool OutputToJsonFile(Dictionary<int, bool> output)
+        public bool OutputToJsonFile(Dictionary<int, string> output)
         {
             throw new NotImplementedException();
         }

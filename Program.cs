@@ -1,5 +1,14 @@
-﻿using dywidag.Infastructure.Services;
+﻿using AutoMapper;
+using dywidag.Infastructure.Services;
+using dywidag.profiles;
 using Microsoft.Extensions.DependencyInjection;
+
+    var config = new MapperConfiguration(mc =>
+    {
+        mc.AddProfile(new MappingProfile());
+    });
+
+    IMapper mapper = config.CreateMapper();
 
 // Services
 var services = new ServiceCollection()
@@ -7,6 +16,8 @@ var services = new ServiceCollection()
     .AddScoped<ILeapYearService, LeapYearService>()
     .AddScoped<ICsvService, CsvService>()
     .AddScoped<IJsonService, JsonService>()
+    .AddSingleton(mapper)
+    .AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies())
     .BuildServiceProvider();
 
 // Run App Logic
