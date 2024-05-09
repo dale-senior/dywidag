@@ -11,7 +11,7 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<KeyValuePair<int, bool>, LeapYearDto>().ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.Key))
+        CreateMap<KeyValuePair<int, string>, LeapYearDto>().ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.Key))
                                                         .ForMember(dest => dest.LeapYear, opt => opt.MapFrom(src => src.Value));
     }
 }     

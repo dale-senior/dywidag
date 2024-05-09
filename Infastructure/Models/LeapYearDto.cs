@@ -8,6 +8,6 @@ namespace dywidag.Infastructure.Models
     public class LeapYearDto
     {
         public int Year { get; set; }
-        public string LeapYear { get; set; }
+        public string LeapYear { get; set; } = "No";
     }
 }
