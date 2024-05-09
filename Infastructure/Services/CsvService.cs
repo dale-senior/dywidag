@@ -7,11 +7,11 @@ namespace dywidag.Infastructure.Services
 {
     public class CsvService : ICsvService
     {
-        public bool OutputToCsvFile(Dictionary<int, string> output, string[] headers)
+        public bool OutputToCsvFile(Dictionary<int, string> output, string[] headers, string filename)
         {
             try
             {
-                using (StreamWriter writer = new StreamWriter("LeapYears.csv"))
+                using (StreamWriter writer = new StreamWriter($"{filename}.csv"))
                 {
                     writer.WriteLine(string.Join(",", headers));
                     foreach (var keyValuePair in output)

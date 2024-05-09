@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using dywidag.Infastructure.Models;
 
 namespace dywidag.Infastructure.Services
 {
@@ -26,12 +27,12 @@ namespace dywidag.Infastructure.Services
             {
                 var yearDictionary = _leapYearService.GetAllYears();
 
-                if(_csvService.OutputToCsvFile(yearDictionary, ["Year", "LeapYear"])) {
+                if(_csvService.OutputToCsvFile(yearDictionary, ["Year", "LeapYear"], "LeapYears")) {
                     Console.WriteLine("CSV Success");
                 }
 
-                if(_jsonService.OutputToJsonFile(yearDictionary)) {
-                    Console.WriteLine("CSV Success");
+                if(_jsonService.OutputToJsonFile<LeapYearDto>(yearDictionary, "LeapYears")) {
+                    Console.WriteLine("json Success");
                 }
             }
             catch(Exception ex) 
