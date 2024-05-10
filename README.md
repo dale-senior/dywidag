@@ -11,7 +11,7 @@ Output: After execution, the application generates two files:
 </ul>
 Along with a console output of the total number of leap years 
 <h2>Installation</h2>
-Clone this repository to your local machine.Ensure you have .net 8 install. Run "dotnet build" then "dotnet run" to run the application from a terminal.
+Clone this repository to your local machine. Ensure you have .net 8 install. Run "dotnet build" then "dotnet run" to run the application from a terminal.
 
 <h2>Tests</h2>
 navigate to the tests solution from the terminal and run "dotnet test" to run the unit tests for the application
