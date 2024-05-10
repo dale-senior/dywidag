@@ -1,4 +1,4 @@
-<h1> Leap Year Calculator </h1>
+<h1> Leap Year Calculator (dywidag Tech Test)</h1>
 <h2>Overview</h2>
 This console application calculates the number of leap years since year 1 and outputs the results to both a CSV and JSON file formats.
 
