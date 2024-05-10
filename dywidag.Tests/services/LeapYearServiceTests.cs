@@ -65,8 +65,6 @@ namespace dywidag.Tests.services
             Assert.That(result, Is.EqualTo(expected));
         }
 
-        //GetLeapYears
-
         [Test]
         public void GetLeapYears_Returns_list()
         {
@@ -81,8 +79,6 @@ namespace dywidag.Tests.services
             var allyears = _service.GetAllYears().Where(w => w.Value == "Yes");
             Assert.That(result.Count, Is.EqualTo(allyears.Count()));
         }
-
-        //GetNonLeapYears
 
         [Test]
         public void GetAllNonLeapYears_Returns_list()

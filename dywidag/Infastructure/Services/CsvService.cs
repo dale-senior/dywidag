@@ -20,14 +20,13 @@ namespace dywidag.Infastructure.Services
         {
             try
             {
-                using (var writer = _fileSystem.File.CreateText($"output/{filename}.csv"))
+
+                List<string> contents = [string.Join(",", headers)];
+                foreach (var keyValuePair in output)
                 {
-                    writer.WriteLine(string.Join(",", headers));
-                    foreach (var keyValuePair in output)
-                    {
-                        writer.WriteLine($"{keyValuePair.Key},{keyValuePair.Value}");
-                    }
+                    contents.Add($"{keyValuePair.Key},{keyValuePair.Value}");
                 }
+                _fileSystem.File.WriteAllLines($"output/{filename}.csv", contents.ToArray());
 
                 return true;
             }

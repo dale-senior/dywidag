@@ -17,7 +17,6 @@ namespace dywidag.Tests.services
     {
 
         private IFileSystem fileSystem;
-        private StreamWriter writer;
         private IMapper mapper;
         private JsonService service;
         private List<LeapYearDto> jsonList;
