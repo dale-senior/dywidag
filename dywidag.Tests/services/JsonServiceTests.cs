@@ -34,57 +34,29 @@ namespace dywidag.Tests.services
         }
 
         [Test]
-        public void OutputToJsonFile_Writes_CorrectDataToFile()
+        public async Task OutputToJsonFile_Writes_CorrectDataToFile()
         {
             var input = new Dictionary<int, string>
             {
                 { 1, "Value1" },
                 { 2, "Value2" }
             };
-            var result = service.OutputToJsonFile<LeapYearDto>(input, "filename");
+            await service.OutputToJsonFile<LeapYearDto>(input, "filename");
             var expectedJson = JsonSerializer.Serialize(jsonList);
 
-            fileSystem.File.Received(1).WriteAllText($"output/filename.json", expectedJson);
+            await fileSystem.File.Received(1).WriteAllTextAsync($"output/filename.json", expectedJson);
         }
 
         [Test]
-        public void OutputToJsonFile_Mapper_Calls_Map()
+        public async Task OutputToJsonFile_Mapper_Calls_Map()
         {
             var input = new Dictionary<int, string>
             {
                 { 1, "Value1" },
                 { 2, "Value2" }
             };
-            var result = service.OutputToJsonFile<LeapYearDto>(input, "filename");
+            await service.OutputToJsonFile<LeapYearDto>(input, "filename");
             mapper.Received().Map<List<LeapYearDto>>(input);
-        }
-
-        [Test]
-        public void OutputToJsonFile_Returns_True_With_No_Error()
-        {
-            var input = new Dictionary<int, string>
-            {
-                { 1, "Value1" },
-                { 2, "Value2" }
-            };
-            var result = service.OutputToJsonFile<LeapYearDto>(input, "filename");
-            Assert.That(result, Is.True);
-        }
-
-
-        [Test]
-        public void OutputToJsonFile_ReturnsFalse_WhenExceptionOccurs()
-        {
-            var input = new Dictionary<int, string>
-            {
-                { 1, "Value1" },
-                { 2, "Value2" }
-            };
-
-            mapper.Map<List<LeapYearDto>>(Arg.Any<Dictionary<int, string>>()).Throws(new Exception());
-
-            var result = service.OutputToJsonFile<LeapYearDto>(input, "filename");
-            Assert.That(result, Is.False);
         }
     }
 }

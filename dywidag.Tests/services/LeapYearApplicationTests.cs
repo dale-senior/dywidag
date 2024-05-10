@@ -39,30 +39,30 @@ namespace dywidag.Tests.services
         }
 
         [Test]
-        public void GetAllYears_Called_On_LeapYearService()
+        public async Task GetAllYears_Called_On_LeapYearService()
         {
-            _application.Run();
+            await _application.Run();
             _leapyearSerive.Received().GetAllYears();
         }
 
         [Test]
-        public void OutputToCsvFile_Called_On_CsvService()
+        public async Task OutputToCsvFile_Called_On_CsvService()
         {
-            _application.Run();
-            _csvService.Received().OutputToCsvFile(_years, Arg.Any<string[]>(), "LeapYears");
+            await _application.Run();
+            await _csvService.Received().OutputToCsvFile(_years, Arg.Any<string[]>(), "LeapYears");
         }
 
         [Test]
-        public void OutputToJsonFile_Called_On_JsonService()
+        public async Task OutputToJsonFile_Called_On_JsonService()
         {
-            _application.Run();
-            _jsonSerice.Received().OutputToJsonFile<LeapYearDto>(_years, "LeapYears");
+            await _application.Run();
+            await _jsonSerice.Received().OutputToJsonFile<LeapYearDto>(_years, "LeapYears");
         }
 
         [Test]
-        public void GetLeapYears_Called_On_LeapYearService()
+        public async Task GetLeapYears_Called_On_LeapYearService()
         {
-            _application.Run();
+            await _application.Run();
             _leapyearSerive.Received().GetLeapYears();
         }
     }
