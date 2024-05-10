@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using dywidag.Infastructure.Services;
 using Microsoft.VisualBasic;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace dywidag.Tests.services
@@ -62,6 +63,40 @@ namespace dywidag.Tests.services
         {
             var result = _service.IsLeapYear(year);
             Assert.That(result, Is.EqualTo(expected));
+        }
+
+        //GetLeapYears
+
+        [Test]
+        public void GetLeapYears_Returns_list()
+        {
+            var result = _service.GetLeapYears();
+            Assert.That(result, Is.InstanceOf<List<int>>());
+        }
+
+        [Test]
+        public void GetLeapYears_Returns_Correct_Number_Of_Items()
+        {
+            var result = _service.GetLeapYears();
+            var allyears = _service.GetAllYears().Where(w => w.Value == "Yes");
+            Assert.That(result.Count, Is.EqualTo(allyears.Count()));
+        }
+
+        //GetNonLeapYears
+
+        [Test]
+        public void GetAllNonLeapYears_Returns_list()
+        {
+            var result = _service.GetAllNonLeapYears();
+            Assert.That(result, Is.InstanceOf<List<int>>());
+        }
+
+        [Test]
+        public void GetAllNonLeapYears_Returns_Correct_Number_Of_Items()
+        {
+            var result = _service.GetAllNonLeapYears();
+            var allyears = _service.GetAllYears().Where(w => w.Value == "No");
+            Assert.That(result.Count, Is.EqualTo(allyears.Count()));
         }
 
     }
