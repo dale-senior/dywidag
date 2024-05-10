@@ -7,6 +7,6 @@ namespace dywidag.Infastructure.Services
 {
     public interface ICsvService
     {
-        bool OutputToCsvFile(Dictionary<int, string> output, string[] headers, string fileName);
+        Task OutputToCsvFile(Dictionary<int, string> output, string[] headers, string filename);
     }
 }

@@ -19,19 +19,17 @@ namespace dywidag.Infastructure.Services
             _fileSystem = fileSystem;
         }
 
-        public bool OutputToJsonFile<T>(Dictionary<int, string> input, string filename)
+        public async Task OutputToJsonFile<T>(Dictionary<int, string> input, string filename)
         {
-
             try
             {
                 List<T> jsonList = _mapper.Map<List<T>>(input);
                 var json = JsonSerializer.Serialize(jsonList);
-                _fileSystem.File.WriteAllText($"output/{filename}.json", json);
-                return true;
+                await _fileSystem.File.WriteAllTextAsync($"output/{filename}.json", json);
             }
             catch (Exception ex)
             {
-                return false;
+                //Log Exception
             }
         }
 

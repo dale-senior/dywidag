@@ -21,7 +21,7 @@ namespace dywidag.Infastructure.Services
             _jsonService = jsonService;
         }
 
-        public void Run()
+        public async Task Run()
         {
             try
             {
@@ -29,10 +29,10 @@ namespace dywidag.Infastructure.Services
                 var yearDictionary = _leapYearService.GetAllYears();
 
                 //write dictionary results to csv file
-                _csvService.OutputToCsvFile(yearDictionary, ["Year", "LeapYear"], "LeapYears");
+                await _csvService.OutputToCsvFile(yearDictionary, ["Year", "LeapYear"], "LeapYears");
 
                 //write dictionary results to json file (pass correct mapped type as generic)
-                _jsonService.OutputToJsonFile<LeapYearDto>(yearDictionary, "LeapYears");
+                await _jsonService.OutputToJsonFile<LeapYearDto>(yearDictionary, "LeapYears");
 
                 //log to console total leap years
                 Console.WriteLine($"Total Leap Years: {_leapYearService.GetLeapYears().Count}");

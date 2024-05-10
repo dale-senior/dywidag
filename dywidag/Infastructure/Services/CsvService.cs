@@ -16,23 +16,20 @@ namespace dywidag.Infastructure.Services
             _fileSystem = fileSystem;
         }
 
-        public bool OutputToCsvFile(Dictionary<int, string> output, string[] headers, string filename)
+        public async Task OutputToCsvFile(Dictionary<int, string> output, string[] headers, string filename)
         {
             try
             {
-
                 List<string> contents = [string.Join(",", headers)];
                 foreach (var keyValuePair in output)
                 {
                     contents.Add($"{keyValuePair.Key},{keyValuePair.Value}");
                 }
-                _fileSystem.File.WriteAllLines($"output/{filename}.csv", contents.ToArray());
-
-                return true;
+                await _fileSystem.File.WriteAllLinesAsync($"output/{filename}.csv", contents.ToArray());
             }
             catch (Exception ex)
             {
-                return false;
+                //Log Exception
             }
         }
     }

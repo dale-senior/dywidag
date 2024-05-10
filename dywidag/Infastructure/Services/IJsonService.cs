@@ -7,6 +7,6 @@ namespace dywidag.Infastructure.Services
 {
     public interface IJsonService
     {
-        bool OutputToJsonFile<T>(Dictionary<int, string> input, string filename);
+        Task OutputToJsonFile<T>(Dictionary<int, string> input, string filename);
     }
 }

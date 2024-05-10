@@ -7,6 +7,6 @@ namespace dywidag.Infastructure.Services
 {
     public interface ILeapYearApplication
     {
-        void Run();
+        Task Run();
     }
 }

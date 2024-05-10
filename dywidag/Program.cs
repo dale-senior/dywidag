@@ -24,4 +24,4 @@ var services = new ServiceCollection()
 
 // Run App Logic
 var app = services.GetService<ILeapYearApplication>();
-app?.Run();
+await app!.Run();
