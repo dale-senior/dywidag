@@ -4,6 +4,7 @@ using System.IO.Abstractions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
 
 namespace dywidag.Infastructure.Services
 {
@@ -29,7 +30,8 @@ namespace dywidag.Infastructure.Services
             }
             catch (Exception ex)
             {
-                //Log Exception
+                var logger = LogManager.GetCurrentClassLogger();
+                logger.Trace(ex.Message);
             }
         }
     }

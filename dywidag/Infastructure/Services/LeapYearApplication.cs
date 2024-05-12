@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using dywidag.Infastructure.Models;
+using NLog;
 
 namespace dywidag.Infastructure.Services
 {
