@@ -15,3 +15,12 @@ Clone this repository to your local machine. Ensure you have .net 8 installed. R
 
 <h2>Tests</h2>
 navigate to the tests solution from the terminal and run "dotnet test" to run the unit tests for the application
+
+<h2>Improvements</h2>
+Configuration file
+  <ul>
+    <li>output path/file name</li>
+    <li>logging config</li>
+    <li>end date</li>
+  </ul>
+Docker File
